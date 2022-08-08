@@ -1,16 +1,23 @@
-interface IMailTo{
+interface IMailTo {
     name: string;
     email: string;
 }
 
-interface IMailMessage{
+interface IMailMessage {
     subject: string;
     body: string;
-    attachment ?: string[]; 
+    attachment?: string[];
 }
 
-class EmailService{
-    sendMail( to: IMailTo , message: IMailMessage){
+interface MessageDTO {
+    to: IMailTo;
+    message: IMailMessage;
+}
+
+//Data transfer object
+
+class EmailService {
+    sendMail({ to, message }: MessageDTO) {
         console.log(`Email enviado para ${to.name}: ${message.subject}`);
     }
 }
