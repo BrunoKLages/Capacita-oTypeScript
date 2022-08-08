@@ -4,9 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const cors_1 = __importDefault(require("cors"));
-const routes_1 = __importDefault(require("./routes"));
-const app = (0, express_1.default)();
-app.use((0, cors_1.default)());
-app.use(routes_1.default);
-app.listen(3333);
+const UserController_1 = __importDefault(require("./controllers/UserController"));
+const routes = (0, express_1.default)();
+routes.get('/users', UserController_1.default.index);
+routes.post('/users', UserController_1.default.create);
+exports.default = routes;
